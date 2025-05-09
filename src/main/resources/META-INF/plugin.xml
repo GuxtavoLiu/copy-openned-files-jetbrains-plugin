@@ -1,15 +1,30 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>org.jetbrains.plugins.template</id>
-    <name>IntelliJ Platform Plugin Template</name>
-    <vendor>JetBrains</vendor>
+    <!-- 1) Identificador único do seu plugin -->
+    <id>com.gustavoliu.copyopenfiles</id>
 
+    <!-- 2) Bundles de localização -->
+    <resource-bundle>messages.CopyOpenFiles</resource-bundle>
+
+    <!-- 3) Nome e descrição carregados via resource-bundle -->
+    <name key="plugin.name"/>
+    <description key="plugin.description"/>
+
+    <!-- 4) Seus dados de vendor -->
+    <vendor email="luizgustavoliu@gmail.com">Gustavo Liu</vendor>
+
+    <!-- 5) Dependência mínima na plataforma IntelliJ -->
     <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
+    <!-- 6) Declaração do tool window -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="org.jetbrains.plugins.template.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="org.jetbrains.plugins.template.startup.MyProjectActivity" />
+        <toolWindow
+                id="CopyOpenFiles"
+                factoryClass="com.gustavoliu.copyopenfiles.toolWindow.CopyOpenFilesWindowFactory"
+                anchor="left"
+                stripeTitle="{plugin.name}"
+                icon="/icons/icon.svg"/>
+
+        <!-- remova esta linha se não precisar rodar código no startup -->
+        <postStartupActivity implementation="com.gustavoliu.copyopenfiles.startup.CopyOpenFiles"/>
     </extensions>
 </idea-plugin>
