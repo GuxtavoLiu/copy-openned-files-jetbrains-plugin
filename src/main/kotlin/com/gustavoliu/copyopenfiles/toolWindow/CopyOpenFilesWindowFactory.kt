@@ -35,6 +35,8 @@ class CopyOpenFilesWindowFactory : ToolWindowFactory {
             lineWrap = true
             wrapStyleWord = true
             text = settings.prefixText
+            toolTipText = "Text to insert before copied content. Example: 'Please analyze the code below and suggest improvements.'"
+
         }
 
         // Scroll para o TextArea
