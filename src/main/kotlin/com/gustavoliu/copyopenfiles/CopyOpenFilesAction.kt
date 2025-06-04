@@ -16,6 +16,9 @@ class CopyOpenFilesAction : AnAction("Copiar Arquivos Abertos") {
         val editorManager = FileEditorManager.getInstance(project)
         val docs = FileDocumentManager.getInstance()
         val sb = StringBuilder()
+        val settings = project.getService(com.gustavoliu.copyopenfiles.services.CopySettingsService::class.java)
+        val prefix = settings.prefixText
+        sb.append(prefix).append("\n\n")
 
         for (vf in editorManager.openFiles) {
             docs.getDocument(vf)?.let { doc ->
